@@ -1,0 +1,126 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Dongle", sans-serif;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  width: 500px;
+  height: 500px;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+:root {
+  --dark-blue: #2f3e46;
+  --gray-blue: #354f52;
+  --mint: #84a98c;
+  --mint-light: #cad2c5;
+  --white: #ffffff;
+}
+
+.container {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+header {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 75px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: var(--dark-blue);
+}
+
+h1 {
+  margin-top: 75px;
+  text-align: center;
+  font-size: 32px;
+  color: var(--dark-blue);
+}
+
+hr {
+  height: 2px;
+  background-color: var(--gray-blue);
+  border: none;
+  margin: 40px 0;
+  border-radius: 100px;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 75px;
+  margin-top: 75px;
+}
+
+button {
+  width: 500px;
+  height: 150px;
+  justify-self: center;
+  background-color: var(--white);
+  border: none;
+  border-radius: 28px;
+  box-shadow: 4px 4px 4px rgba(47, 62, 70, 0.15);
+  font-size: 32px;
+  font-family: "Dongle";
+  /* 3D border effect: nổi lên */
+  border-top: 3px solid #b0b0b0;
+  border-left: 3px solid #b0b0b0;
+  border-bottom: 3px solid #b0b0b0;
+  border-right: 3px solid #b0b0b0;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  color: var(--dark-blue);
+  font-weight: bold;
+}
+
+button:active {
+  box-shadow: 1px 1px 2px rgba(47, 62, 70, 0.2);
+  transform: translateY(2px);
+}
+
+.skills-container button:nth-child(2),
+.skills-container button:nth-child(4) {
+  box-shadow: -4px 4px 4px rgba(47, 62, 70, 0.15);
+  border-top: 3px solid #b0b0b0;
+  border-left: 3px solid #b0b0b0;
+  border-bottom: 3px solid #b0b0b0;
+  border-right: 3px solid #b0b0b0;
+}
