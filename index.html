@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/styles/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        WowwoW - Gợi ý phương pháp học tiếng Anh cá nhân hoá
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Comunity</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Nhận gợi ý phương pháp học tiếng Anh</h1>
+    <form id="suggestionForm">
+      <label for="level">Trình độ tiếng Anh của bạn:</label>
+      <select id="level" name="level" required>
+        <option value="">--Chọn trình độ--</option>
+        <option value="beginner">Mới bắt đầu</option>
+        <option value="intermediate">Trung cấp</option>
+        <option value="advanced">Nâng cao</option>
+      </select>
+      <br /><br />
+      <label for="goal">Mục tiêu học tiếng Anh:</label>
+      <select id="goal" name="goal" required>
+        <option value="">--Chọn mục tiêu--</option>
+        <option value="communication">Giao tiếp</option>
+        <option value="exam">Thi cử</option>
+        <option value="work">Công việc</option>
+        <option value="travel">Du lịch</option>
+      </select>
+      <br /><br />
+      <label for="interest">Sở thích khi học:</label>
+      <select id="interest" name="interest" required>
+        <option value="">--Chọn sở thích--</option>
+        <option value="music">Nghe nhạc</option>
+        <option value="movies">Xem phim</option>
+        <option value="reading">Đọc sách/báo</option>
+        <option value="games">Chơi game</option>
+        <option value="talking">Nói chuyện với người khác</option>
+      </select>
+      <br /><br />
+      <label for="time">Thời gian học mỗi ngày:</label>
+      <select id="time" name="time" required>
+        <option value="">--Chọn thời gian--</option>
+        <option value="15">Dưới 15 phút</option>
+        <option value="30">15-30 phút</option>
+        <option value="60">30-60 phút</option>
+        <option value="more">Trên 1 tiếng</option>
+      </select>
+      <br /><br />
+      <button type="submit">Nhận gợi ý</button>
+    </form>
+    <div id="suggestionResult" style="margin-top: 20px"></div>
+    <script>
+      function showPopup(message) {
+        // Create overlay
+        const overlay = document.createElement("div");
+        overlay.style.position = "fixed";
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = "100vw";
+        overlay.style.height = "100vh";
+        overlay.style.background = "rgba(0,0,0,0.4)";
+        overlay.style.display = "flex";
+        overlay.style.alignItems = "center";
+        overlay.style.justifyContent = "center";
+        overlay.style.zIndex = 1000;
+
+        // Create popup box
+        const popup = document.createElement("div");
+        popup.style.background = "#fff";
+        popup.style.padding = "40px";
+        popup.style.borderRadius = "12px";
+        popup.style.maxWidth = "800px";
+        popup.style.boxShadow = "0 4px 16px rgba(0,0,0,0.25)";
+        popup.style.textAlign = "left";
+        popup.style.fontSize = "32px"; // Set font size to 40px
+        popup.style.lineHeight = "1.7";
+        popup.innerHTML = `<div style="margin-bottom:24px">${message}</div>`;
+
+        // Close button
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "Đóng";
+        closeBtn.style.padding = "12px 28px";
+        closeBtn.style.background = "var(--mint)";
+        closeBtn.style.color = "#fff";
+        closeBtn.style.fontSize = "1.1rem";
+        closeBtn.style.border = "none";
+        closeBtn.style.borderRadius = "6px";
+        closeBtn.style.cursor = "pointer";
+        closeBtn.onclick = function () {
+          document.body.removeChild(overlay);
+        };
+
+        popup.appendChild(closeBtn);
+        overlay.appendChild(popup);
+        document.body.appendChild(overlay);
+      }
+
+      document
+        .getElementById("suggestionForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const level = document.getElementById("level").value;
+          const goal = document.getElementById("goal").value;
+          const interest = document.getElementById("interest").value;
+          const time = document.getElementById("time").value;
+          let suggestion = "";
+
+          // Level
+          if (level === "beginner") {
+            suggestion +=
+              "Bạn nên bắt đầu với các khóa học cơ bản, học từ vựng và ngữ pháp cơ bản. ";
+          } else if (level === "intermediate") {
+            suggestion +=
+              "Bạn có thể luyện nghe, nói và đọc các tài liệu tiếng Anh thực tế. ";
+          } else if (level === "advanced") {
+            suggestion +=
+              "Bạn nên luyện kỹ năng nâng cao như viết luận, thuyết trình và đọc sách chuyên ngành. ";
+          }
+
+          // Goal
+          if (goal === "communication") {
+            suggestion +=
+              "Tập trung vào luyện nghe và nói qua các đoạn hội thoại, xem phim, nghe podcast. ";
+          } else if (goal === "exam") {
+            suggestion +=
+              "Ôn luyện các đề thi mẫu, chú trọng kỹ năng đọc hiểu và viết. ";
+          } else if (goal === "work") {
+            suggestion +=
+              "Học từ vựng chuyên ngành, luyện viết email và giao tiếp công sở. ";
+          } else if (goal === "travel") {
+            suggestion +=
+              "Học các mẫu câu giao tiếp thông dụng khi đi du lịch. ";
+          }
+
+          // Interest
+          if (interest === "music") {
+            suggestion +=
+              "Bạn có thể học tiếng Anh qua các bài hát và lời nhạc. ";
+          } else if (interest === "movies") {
+            suggestion +=
+              "Xem phim tiếng Anh có phụ đề để cải thiện kỹ năng nghe và từ vựng. ";
+          } else if (interest === "reading") {
+            suggestion +=
+              "Đọc sách, báo, truyện ngắn tiếng Anh để mở rộng vốn từ. ";
+          } else if (interest === "games") {
+            suggestion +=
+              "Chơi các trò chơi tiếng Anh để học từ vựng và phản xạ. ";
+          } else if (interest === "talking") {
+            suggestion +=
+              "Tham gia các câu lạc bộ tiếng Anh hoặc nói chuyện với người bản xứ. ";
+          }
+
+          // Time
+          if (time === "15") {
+            suggestion +=
+              "Bạn nên chọn các bài học ngắn, học đều đặn mỗi ngày để duy trì thói quen. ";
+          } else if (time === "30") {
+            suggestion +=
+              "Bạn có thể kết hợp học từ vựng, nghe và nói trong mỗi buổi học. ";
+          } else if (time === "60") {
+            suggestion +=
+              "Bạn có đủ thời gian để luyện cả 4 kỹ năng: nghe, nói, đọc, viết. ";
+          } else if (time === "more") {
+            suggestion +=
+              "Bạn có thể tham gia các khóa học chuyên sâu hoặc luyện tập với người bản xứ. ";
+          }
+
+          suggestion +=
+            "Bạn có thể học tiếng Anh theo sở thích, nhưng nó không quá hiệu quả vì việc học theo sở thích thường chỉ giúp bạn duy trì động lực, còn để nâng cao từ vựng và ngữ pháp thì cần kết hợp nhiều phương pháp học khác nhau.";
+
+          // Show popup instead of displaying in suggestionResult
+          showPopup(suggestion);
+        });
+    </script>
+  </body>
+</html>
